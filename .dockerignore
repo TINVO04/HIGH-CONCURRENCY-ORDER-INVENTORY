@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+.git/
+.vscode/
+.idea/
+TestResults/
+*.user
+*.suo
+*.DotSettings.user
+*.log
+.env
+.env.*
+!.env.example
