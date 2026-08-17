@@ -1,0 +1,65 @@
+# Build output
+**/bin/
+**/obj/
+[Bb]uild/
+[Bb]uildOutput/
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+BenchmarkDotNet.Artifacts/
+
+# Test and coverage artifacts
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+.coverage/
+
+# IDE and editor files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+*.rsuser
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+secrets.json
+secrets.*.json
+*.pfx
+*.p12
+
+# Logs, dumps and local diagnostics
+*.log
+*.dmp
+*.dump
+*.tmp
+*.bak
+.debug-*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local databases and data exports
+*.db
+*.sqlite
+*.sqlite3
+*.bak.sql
+*.dump.sql
+
+# Documentation and planning artifacts outside the project publish scope
+docs/
+plans/
+*.docx
+*.pdf
+.roomodes
+~$*
