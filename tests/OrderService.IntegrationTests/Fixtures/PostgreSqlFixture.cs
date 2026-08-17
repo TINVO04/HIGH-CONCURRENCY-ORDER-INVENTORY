@@ -16,7 +16,7 @@ public sealed class PostgreSqlFixture : IAsyncLifetime
         ConnectionString = Environment.GetEnvironmentVariable("TEST_DATABASE_CONNECTION_STRING") ?? Environment.GetEnvironmentVariable("ConnectionStrings__PostgreSQL");
         if (!string.IsNullOrWhiteSpace(ConnectionString)) return;
         if (!string.Equals(Environment.GetEnvironmentVariable("TESTCONTAINERS_ENABLED"), "true", StringComparison.OrdinalIgnoreCase)) return;
-        _container = new PostgreSqlBuilder().WithImage("postgres:17-alpine").Build();
+        _container = new PostgreSqlBuilder("postgres:17-alpine").Build();
         await _container.StartAsync();
         ConnectionString = _container.GetConnectionString();
     }

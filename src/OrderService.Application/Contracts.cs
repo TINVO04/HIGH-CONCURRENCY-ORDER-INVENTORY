@@ -20,7 +20,7 @@ public sealed class SystemClock : IClock
 
 public interface IOrderService
 {
-    Task<OperationResult<OrderResponse>> CreateAsync(CreateOrderRequest request, string idempotencyKey, string requestPath, CancellationToken cancellationToken);
+    Task<OperationResult<OrderResponse>> CreateAsync(CreateOrderRequest request, string idempotencyKey, string requestPath, string traceId, CancellationToken cancellationToken);
     Task<OperationResult<OrderResponse>> ConfirmAsync(Guid orderId, CancellationToken cancellationToken);
     Task<OperationResult<OrderResponse>> CancelAsync(Guid orderId, CancellationToken cancellationToken);
 }

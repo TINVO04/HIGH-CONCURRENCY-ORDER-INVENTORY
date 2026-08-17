@@ -205,8 +205,6 @@ namespace OrderService.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_orders_event_times", "(confirmed_at IS NULL OR confirmed_at >= created_at) AND (cancelled_at IS NULL OR cancelled_at >= created_at)");
 
-                            t.HasCheckConstraint("ck_orders_expiry_after_create", "reservation_expired_at > created_at");
-
                             t.HasCheckConstraint("ck_orders_number_not_blank", "length(btrim(order_number)) > 0");
 
                             t.HasCheckConstraint("ck_orders_status", "status IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'EXPIRED')");

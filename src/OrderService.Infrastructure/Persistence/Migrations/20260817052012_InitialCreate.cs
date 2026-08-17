@@ -33,7 +33,6 @@ namespace OrderService.Infrastructure.Persistence.Migrations
                 {
                     table.PrimaryKey("pk_orders", x => x.id);
                     table.CheckConstraint("ck_orders_event_times", "(confirmed_at IS NULL OR confirmed_at >= created_at) AND (cancelled_at IS NULL OR cancelled_at >= created_at)");
-                    table.CheckConstraint("ck_orders_expiry_after_create", "reservation_expired_at > created_at");
                     table.CheckConstraint("ck_orders_number_not_blank", "length(btrim(order_number)) > 0");
                     table.CheckConstraint("ck_orders_status", "status IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'EXPIRED')");
                     table.CheckConstraint("ck_orders_terminal_timestamps", "(status = 'PENDING' AND confirmed_at IS NULL AND cancelled_at IS NULL) OR (status = 'CONFIRMED' AND confirmed_at IS NOT NULL AND cancelled_at IS NULL) OR (status = 'CANCELLED' AND confirmed_at IS NULL AND cancelled_at IS NOT NULL) OR (status = 'EXPIRED' AND confirmed_at IS NULL AND cancelled_at IS NULL)");

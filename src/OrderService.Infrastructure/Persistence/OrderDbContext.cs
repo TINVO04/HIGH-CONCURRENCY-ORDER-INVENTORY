@@ -61,7 +61,6 @@ public sealed class OrderDbContext(DbContextOptions<OrderDbContext> options) : D
             table.HasCheckConstraint("ck_orders_number_not_blank", "length(btrim(order_number)) > 0");
             table.HasCheckConstraint("ck_orders_status", "status IN ('PENDING', 'CONFIRMED', 'CANCELLED', 'EXPIRED')");
             table.HasCheckConstraint("ck_orders_total_nonnegative", "total_amount >= 0");
-            table.HasCheckConstraint("ck_orders_expiry_after_create", "reservation_expired_at > created_at");
             table.HasCheckConstraint("ck_orders_event_times", "(confirmed_at IS NULL OR confirmed_at >= created_at) AND (cancelled_at IS NULL OR cancelled_at >= created_at)");
             table.HasCheckConstraint("ck_orders_terminal_timestamps", "(status = 'PENDING' AND confirmed_at IS NULL AND cancelled_at IS NULL) OR (status = 'CONFIRMED' AND confirmed_at IS NOT NULL AND cancelled_at IS NULL) OR (status = 'CANCELLED' AND confirmed_at IS NULL AND cancelled_at IS NOT NULL) OR (status = 'EXPIRED' AND confirmed_at IS NULL AND cancelled_at IS NULL)");
         });
